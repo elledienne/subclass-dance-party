@@ -2,7 +2,7 @@
 var Dancer = function (top, left, timeBetweenSteps) {
   this.$node = $('<span class="dancer"></span>');
   this.timeBetweenSteps = timeBetweenSteps;
-
+  
   Dancer.prototype.step.call(this);  
   Dancer.prototype.setPosition.call(this, top, left);
 };
@@ -20,6 +20,7 @@ Dancer.prototype.setPosition = function(top, left) {
       left: left
     };
     this.$node.css(styleSettings);
+    console.log('inside dancer',this.$node.position());
 };
 
 
