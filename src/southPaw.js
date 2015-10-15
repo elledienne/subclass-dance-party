@@ -1,6 +1,7 @@
 var SouthPaw = function (top, left, speed) {
   Dancer.call(this, top, left);
   this.speed = speed;
+  this.$node.addClass('southPaw');
 
   this.moveLeft();
 };

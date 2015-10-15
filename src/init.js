@@ -3,6 +3,7 @@ $(document).ready(function() {
   window.baloons = [];
   window.southPaws = [];
   window.lowestZ = 0;
+  window.catMode = false;
   
   window.pair = function(sp, b) {
     if(b.z === undefined) {
@@ -43,6 +44,13 @@ $(document).ready(function() {
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+
+    if(catMode) {
+      dancer.$node.addClass('cat');
+    }
+
+    dancers.push(dancer);
+
     if(dancerMakerFunctionName === 'SouthPaw') {    
       if(baloons.length > 0) {
         pair(dancer, baloons.pop());
@@ -65,7 +73,21 @@ $(document).ready(function() {
 
 
 
-    $('body').append(dancer.$node);
+    $('.dancefloor').append(dancer.$node);
+  });
+
+  $(".startDrain").on("click", function(event) {
+    var duration = 2500
+    $('.dancefloor').addClass('draining');
+    setTimeout($().removeClass.bind($('.dancefloor'), 'draining'), duration)
+    for(var i = 0; i < dancers.length; i++) {
+      dancers[i].drain(duration);
+    }
+  });
+
+  $('.cats').on("click", function () {
+    catMode = !catMode;
+    $('.dancer').toggleClass('cat')
   });
 });
 

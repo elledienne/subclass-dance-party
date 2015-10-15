@@ -2,23 +2,24 @@ var Baloon = function(top, left, speed){
   Dancer.call(this, top, left);
   this.speed = speed;
   this.$node.toggleClass('baloon');
+  this.exploded = false;
   this.expand();
   this.checkPop();
-  this.exploded = false;
 };
 
 Baloon.prototype = Object.create(Dancer.prototype);
 Baloon.prototype.constructor = Baloon;
 
+
 Baloon.prototype.expand = function(){
   var size = this.$node.width() + 50;
   var left = this.cssToNum('left') - 25;
   var top = this.cssToNum('top') - 25;
+  // this.$node.animate({width: size, height: size, left: left, top: top}, this.speed, 'swing', this.expand.bind(this, this.action)); 
   this.$node.animate({width: size, height: size, left: left, top: top}, this.speed, 'swing', this.expand.bind(this));
 }
 
 Baloon.prototype.checkPop = function () {
-
   if(!this.exploded) {
     if(this.pair !== undefined) {
       var sp = this.pair;
@@ -45,7 +46,10 @@ Baloon.prototype.checkPop = function () {
 Baloon.prototype.explode = function (count) {
   this.exploded = true;
   if(count <= 0) {
-    this.$node.hide();
+    this.$node.remove();
+    window.southPaws.push(this.pair);
+    this.pair.pair = null;
+    this.pair = null;
   }
   else{
     this.$node.toggle();

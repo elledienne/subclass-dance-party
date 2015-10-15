@@ -9,7 +9,7 @@ body{
 body, a:link, a:visited, a:active{
   color: lightblue;
 }
-.title, .addDancerButton{
+.title, .addDancerButton, .startDrain{
   padding:5px 12px;
   float:right;
 }
@@ -28,4 +28,37 @@ body, a:link, a:visited, a:active{
   /*border:10px solid;*/
   border-radius: 50%;
   position:absolute;
+}
+
+.baloon.cat{
+  background: url('src/img/cupcat.gif') no-repeat center !important;
+  background-size: 90% 90% !important;
+}
+.southPaw.cat {
+  background: url('src/img/nyann.gif') no-repeat center !important;
+  background-size: 100% 100% !important;
+  border-radius: 0;
+  width: 90px;
+  height: 30px;
+}
+
+
+.container, .dancefloor{
+  height: 100%
+}
+.draining {
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-name: sink;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-origin: 50% 50%;
+}
+
+@-webkit-keyframes sink {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
 }

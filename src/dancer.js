@@ -29,17 +29,15 @@ Dancer.prototype.setColor = function () {
     var r1 = Math.floor(Math.random()*255);
     var g1 = Math.floor(Math.random()*255);
     var b1 = Math.floor(Math.random()*255);
-    var a1 = Math.random();
+    var a1 = 0.8 + 0.1*Math.random();
     var r2 = Math.floor(Math.random()*255);
     var g2 = Math.floor(Math.random()*255);
     var b2 = Math.floor(Math.random()*255);
-    var a2 = Math.random();
+    var a2 = 0.8 + 0.1*Math.random();
 
     var radGrad = 'radial-gradient(circle, ' + 'rgba('+r1+','+g1+','+b1+','+a1+'),' + 'rgba('+r2+','+g2+','+b2+','+a2+'))';
 
     return {'background': radGrad};
-
-
   }
 
   var r = Math.floor(Math.random()*255);
@@ -59,3 +57,24 @@ Dancer.prototype.checkPosition = function () {
     return {x: hCenter, y: vCenter};
 }
 
+Dancer.prototype.drain = function (duration) {
+  var centerPosition = {
+    x: $('.dancefloor').width() / 2,
+    y: $('.dancefloor').height() / 2
+  }
+
+  //this.action = false;
+  this.$node.stop(true);
+  var properties = {
+    'left': centerPosition.x - 10,//this.cssToNum('width')/2,
+    'top': centerPosition.y - 10,//this.cssToNum('height')/2,
+    'width': '20px',
+    'height': '20px'
+  }
+  // if(this.$node.hasClass('baloon')) {
+  //   //this.shrink();
+  //   properties['width'] = 'px';
+  //   properties['height'] = '20px';
+  // }
+  this.$node.animate(properties, duration, 'linear', $().fadeOut.bind(this.$node, 400, $().remove.bind(this.$node)));
+}
