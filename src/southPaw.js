@@ -2,16 +2,14 @@ var SouthPaw = function (top, left, speed) {
   Dancer.call(this, top, left);
   this.speed = speed;
 
-  SouthPaw.prototype.moveLeft.call(this);
+  this.moveLeft();
 };
 SouthPaw.prototype = Object.create(Dancer.prototype);
 SouthPaw.prototype.constructor = SouthPaw;
 
 SouthPaw.prototype.moveLeft = function () {
   //console.log(typeof this.$node.css('left'));
-  var currentLeft = this.$node.css('left')
-  currentLeft = +currentLeft.substring(0, currentLeft.length - 2);
-  var newLeftPosition = currentLeft - 50;
+  var currentLeft = this.cssToNum('left');
   if(currentLeft <= -50) {
     currentLeft = $(window).width();
     this.$node.css({'left': currentLeft});
