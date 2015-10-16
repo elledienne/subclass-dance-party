@@ -2,8 +2,9 @@ $(document).ready(function() {
   window.dancers = [];
   window.baloons = [];
   window.southPaws = [];
-  window.lowestZ = 0;
+  window.lowestZ = 9999;
   window.catMode = false;
+  window.dancerCount = 0;
   
   window.pair = function(sp, b) {
     if(b.z === undefined) {
@@ -77,17 +78,23 @@ $(document).ready(function() {
   });
 
   $(".startDrain").on("click", function(event) {
-    var duration = 2500
+    var duration = 2500;
+    southPaws = [];
+    baloons = [];
     $('.dancefloor').addClass('draining');
     setTimeout($().removeClass.bind($('.dancefloor'), 'draining'), duration)
     for(var i = 0; i < dancers.length; i++) {
       dancers[i].drain(duration);
     }
+    dancers = [];
+    dancerCount = 0;
+    lowestZ = 0;
   });
 
   $('.cats').on("click", function () {
     catMode = !catMode;
     $('.dancer').toggleClass('cat')
   });
+
 });
 

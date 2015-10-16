@@ -9,12 +9,16 @@ body{
 body, a:link, a:visited, a:active{
   color: lightblue;
 }
-.title, .addDancerButton, .startDrain{
+body, .dancefloor, .container {
+  z-index: -9999;
+}
+
+.title, .addDancerButton, .startDrain, .cats{
   padding:5px 12px;
   float:right;
 }
 .topbar{
-  z-index: 5;
+  z-index: 10000;
   position: absolute;
   height:32px;
   background-color: #555;
@@ -25,7 +29,6 @@ body, a:link, a:visited, a:active{
 .dancer{
   width:20px;
   height:20px;
-  /*border:10px solid;*/
   border-radius: 50%;
   position:absolute;
 }
@@ -38,8 +41,8 @@ body, a:link, a:visited, a:active{
   background: url('src/img/nyann.gif') no-repeat center !important;
   background-size: 100% 100% !important;
   border-radius: 0;
-  width: 90px;
-  height: 30px;
+  width: 90px !important;
+  height: 30px !important;
 }
 
 

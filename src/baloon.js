@@ -5,18 +5,22 @@ var Baloon = function(top, left, speed){
   this.exploded = false;
   this.expand();
   this.checkPop();
+  var that = this;
+  this.$node.on('click', function () {
+    console.log('derp')
+    that.explode(10);
+  });
 };
 
 Baloon.prototype = Object.create(Dancer.prototype);
 Baloon.prototype.constructor = Baloon;
-
 
 Baloon.prototype.expand = function(){
   var size = this.$node.width() + 50;
   var left = this.cssToNum('left') - 25;
   var top = this.cssToNum('top') - 25;
   // this.$node.animate({width: size, height: size, left: left, top: top}, this.speed, 'swing', this.expand.bind(this, this.action)); 
-  this.$node.animate({width: size, height: size, left: left, top: top}, this.speed, 'swing', this.expand.bind(this));
+  this.$node.animate({width: size, height: size, left: left, top: top}, this.speed, 'linear', this.expand.bind(this));
 }
 
 Baloon.prototype.checkPop = function () {
@@ -39,7 +43,7 @@ Baloon.prototype.checkPop = function () {
         this.explode(10);
       }
     }
-    setTimeout(this.checkPop.bind(this), 50);
+    setTimeout(this.checkPop.bind(this), 10);
   }
 };
 

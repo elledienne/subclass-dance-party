@@ -16,5 +16,5 @@ SouthPaw.prototype.moveLeft = function () {
     this.$node.css({'left': currentLeft});
   }
   var newLeftPosition = currentLeft - 50;
-  this.$node.animate({'left': newLeftPosition}, this.speed, 'swing', this.moveLeft.bind(this));
+  this.$node.animate({'left': newLeftPosition}, this.speed, 'linear', this.moveLeft.bind(this));
 };

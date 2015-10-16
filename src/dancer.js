@@ -1,6 +1,10 @@
 // Creates and returns a new dancer object that can step
 var Dancer = function (top, left, timeBetweenSteps) {
   this.$node = $('<span class="dancer"></span>');
+  this.$node.data(dancerCount);
+  var size = 10 + Math.random()*20;
+  this.$node.css({'width': size, 'height': size});
+  dancerCount++;
   this.timeBetweenSteps = timeBetweenSteps;
 
   this.step();  
@@ -78,3 +82,14 @@ Dancer.prototype.drain = function (duration) {
   // }
   this.$node.animate(properties, duration, 'linear', $().fadeOut.bind(this.$node, 400, $().remove.bind(this.$node)));
 }
+
+Dancer.prototype.particleSource = function (count, size, direction, speed) {
+  var center = this.checkPosition();
+  for(var i = 0; i < count; i++){
+    dancers.push(new MiniBlinky(center.x, center.y, size, direction, speed))
+  }
+}
+
+
+
+
