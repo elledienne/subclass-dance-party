@@ -96,5 +96,13 @@ $(document).ready(function() {
     $('.dancer').toggleClass('cat')
   });
 
+  $(document).on("click", '.baloon', function () {
+    console.log('derp');
+    //console.log()
+    dancers[$(this).attr('object-ref')].explode(10);
+  });
 });
+
+
+
 

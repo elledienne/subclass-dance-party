@@ -6,10 +6,6 @@ var Baloon = function(top, left, speed){
   this.expand();
   this.checkPop();
   var that = this;
-  this.$node.on('click', function () {
-    console.log('derp')
-    that.explode(10);
-  });
 };
 
 Baloon.prototype = Object.create(Dancer.prototype);
@@ -48,12 +44,18 @@ Baloon.prototype.checkPop = function () {
 };
 
 Baloon.prototype.explode = function (count) {
+  if(!this.exploded) {
+    this.$node.stop(true);
+  }
   this.exploded = true;
   if(count <= 0) {
+    this.particleSource(1, 10, 4)
     this.$node.remove();
-    window.southPaws.push(this.pair);
-    this.pair.pair = null;
-    this.pair = null;
+    if(this.pair) {
+      window.southPaws.push(this.pair);
+      this.pair.pair = null;
+      this.pair = null;
+    }
   }
   else{
     this.$node.toggle();

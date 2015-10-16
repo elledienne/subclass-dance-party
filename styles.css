@@ -56,6 +56,20 @@ body, .dancefloor, .container {
   -webkit-animation-duration: 1.5s;
   -webkit-animation-origin: 50% 50%;
 }
+.left {
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-name: sink;
+  /*-webkit-animation-duration: 1.5s;
+  -webkit-animation-origin: 50% 50%;*/
+}
+.right {
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-name: sink;
+  /*-webkit-animation-duration: 1.5s;
+  -webkit-animation-origin: 50% 50%;*/
+}
 
 @-webkit-keyframes sink {
   from {
@@ -65,3 +79,29 @@ body, .dancefloor, .container {
     -webkit-transform: rotate(360deg);
   }
 }
+
+@-webkit-keyframes right {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(180deg);
+  }
+}
+
+@-webkit-keyframes left {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(-180deg);
+  }
+}
+
+
+
+
+
+
+
+
